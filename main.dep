@@ -1,0 +1,12 @@
+package main
+
+import (
+	"fmt"
+
+	_ "github.com/flaviostutz/etcd-registry/etcd-registry"
+	_ "github.com/sirupsen/logrus"
+)
+
+func main() {
+	fmt.Println("This is used for build caching purposes. Should be replaced.")
+}
