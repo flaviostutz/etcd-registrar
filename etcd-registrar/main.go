@@ -44,7 +44,7 @@ func main() {
 		panic("--name should be defined")
 	}
 
-	logrus.Infof("Registering service node at /%s/%s/%s [service=%s, name=%s, ttl=%d, info=%s]. etcdUrl=%s", etcdBase, service, name, service, name, ttl, info, etcdURL)
+	logrus.Infof("Registering service node at %s/%s/%s [service=%s, name=%s, ttl=%d, info=%s]. etcdUrl=%s", etcdBase, service, name, service, name, ttl, info, etcdURL)
 
 	switch *logLevel {
 	case "debug":
