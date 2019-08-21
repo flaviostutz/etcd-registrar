@@ -1,21 +1,23 @@
-FROM golang:1.10 AS BUILD
+FROM golang:1.12 AS BUILD
 
 #doing dependency build separated from source build optimizes time for developer, but is not required
 #install external dependencies first
 ADD /main.dep $GOPATH/src/etcd-registrar/main.go
-RUN go get -v etcd-registrar
-
-#now build source code
 ADD /etcd-registrar $GOPATH/src/etcd-registrar
+
+WORKDIR $GOPATH/src/etcd-registrar
+
 RUN go get -v etcd-registrar
 
+RUN CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o /etcd-registrar main.go
 
+FROM alpine
 
-FROM golang:1.10
+RUN apk add bash
 
 ENV LOG_LEVEL 'info'
 
-COPY --from=BUILD /go/bin/* /bin/
+COPY --from=BUILD /etcd-registrar /bin/
 ADD startup.sh /
 
 ENV ETCD_URL ""

@@ -4,6 +4,8 @@ services:
 
   etcd-registrar1:
     build: .
+    depends_on:
+      - etcd0
     image: flaviostutz/etcd-registrar
     environment:
       - LOG_LEVEL=debug
@@ -17,17 +19,23 @@ services:
   etcd-registrar2:
     build: .
     image: flaviostutz/etcd-registrar
+    depends_on:
+      - etcd0
     environment:
       - LOG_LEVEL=debug
       - ETCD_URL=http://etcd0:2379
       - ETCD_BASE=/webservers
-      - SERVICE=test1
+      - SERVICE=test2
       - NAME=node12
       - TTL=60
       - INFO=
 
   etcd-list:
     build: .
+    depends_on:
+      - etcd-registrar1
+      - etcd-registrar2
+    image: flaviostutz/etcd-registrar
     environment:
       - LOG_LEVEL=debug
       - ETCD_URL=http://etcd0:2379
