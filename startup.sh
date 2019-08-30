@@ -8,7 +8,7 @@ etcd-registrar \
     --etcd-url=$ETCD_URL \
     --etcd-base=$ETCD_BASE \
     --service=$SERVICE \
-    --name=$NAME \
+    --port=$PORT \
     --info=$INFO \
     --ttl=$TTL \
     --list=$LIST
