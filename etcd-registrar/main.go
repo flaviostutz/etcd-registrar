@@ -8,7 +8,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/flaviostutz/etcd-registry/etcd-registry"
+	etcdregistry "github.com/flaviostutz/etcd-registry/etcd-registry"
+	gohcmd "github.com/labbsr0x/goh/gohcmd"
 	"github.com/sirupsen/logrus"
 )
 
@@ -18,7 +19,7 @@ func main() {
 	etcdBase0 := flag.String("etcd-base", "/services", "Base ETCD path. Defaults to '/services'")
 	service0 := flag.String("service", "", "Service name. Ex: ServiceA")
 	list0 := flag.Bool("list", false, "If true, will return a list of service nodes registered in ETCD")
-	name0 := flag.String("name", "", "Node name. Maybe an IP or a custom name. Ex.: node345")
+	port0 := flag.String("port", "", "Exposed service port")
 	info0 := flag.String("info", "", "Additional node info in json format")
 	ttl0 := flag.Int("ttl", 60, "Time to Live. The daemon will keep updating the node's lease until it is killed")
 	flag.Parse()
@@ -27,7 +28,7 @@ func main() {
 	etcdBase := *etcdBase0
 	list := *list0
 	service := *service0
-	name := *name0
+	port := *port0
 	ttl := *ttl0
 	info := *info0
 
@@ -39,10 +40,17 @@ func main() {
 		showUsage()
 		panic("--service should be defined")
 	}
-	if !list && name == "" {
+	if !list && port == "" {
 		showUsage()
-		panic("--name should be defined")
+		panic("--port should be defined")
 	}
+
+	ip, err := gohcmd.ExecShell("ip route get 8.8.8.8 | grep -oE 'src ([0-9\\.]+)' | cut -d ' ' -f 2")
+	if err != nil {
+		panic(fmt.Sprintf("Unable to get ip: %v", err))
+	}
+
+	name := fmt.Sprintf("%s:%s", ip, port)
 
 	logrus.Infof("Registering service node at %s/%s/%s [service=%s, name=%s, ttl=%d, info=%s]. etcdUrl=%s", etcdBase, service, name, service, name, ttl, info, etcdURL)
 
@@ -73,7 +81,7 @@ func main() {
 			panic(err)
 		}
 		for _, n := range nodes {
-			fmt.Sprintf("%s;%s;%s", service, n.Name, n.Info)
+			logrus.Debugf(fmt.Sprintf("%s;%s;%s", service, n.Name, n.Info))
 		}
 
 	} else {
