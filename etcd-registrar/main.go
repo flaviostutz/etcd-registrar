@@ -107,9 +107,9 @@ func showUsage() {
 	fmt.Printf("This utility maintains a TTL based service registry, so that service nodes can register themselves if they desapear, its registration will vanish. This daemon will keep the node alive on ETCD until it is killed")
 	fmt.Printf("")
 	fmt.Printf("For service node registration:")
-	fmt.Printf("etcd-registrar --etcd-url=[ETCD URL] --etcd-base=[ETCD BASE] --service=[SERVICE NAME] --name=[NODE NAME] --ttl=[TTL IN SECONDS] --info=[NODE INFO JSON]")
+	fmt.Printf("etcd-registrar --etcd-url=[ETCD URL] --etcd-base=[ETCD BASE] --service=[SERVICE NAME] --port=[SERVICE PORT] --ttl=[TTL IN SECONDS] --info=[NODE INFO JSON]")
 	fmt.Printf(
 		`Sample:
-    etcd-registrar --etcd-url=http://etcd0:2375 --service=Service123 --name=node5 --ttl=60 --info='{address:172.17.1.23, weight:4}'
+    etcd-registrar --etcd-url=http://etcd0:2379 --service=Service123 --port=3000 --ttl=60 --info='{address:172.17.1.23, weight:4}'
 `)
 }
