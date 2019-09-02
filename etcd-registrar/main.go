@@ -49,6 +49,7 @@ func main() {
 	if err != nil {
 		panic(fmt.Sprintf("Unable to get ip: %v", err))
 	}
+	ip = strings.ReplaceAll(ip, "\n", "") // removes any unlucky \n
 
 	name := fmt.Sprintf("%s:%s", ip, port)
 
