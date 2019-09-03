@@ -12,7 +12,7 @@ services:
       - ETCD_URL=http://etcd0:2379
       - ETCD_BASE=/webservers
       - SERVICE=test1
-      - NAME=node11
+      - PORT=3000
       - TTL=60
       - INFO=
 
@@ -26,7 +26,7 @@ services:
       - ETCD_URL=http://etcd0:2379
       - ETCD_BASE=/webservers
       - SERVICE=test2
-      - NAME=node12
+      - PORT=3000
       - TTL=60
       - INFO=
 

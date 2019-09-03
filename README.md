@@ -18,7 +18,7 @@ services:
       - ETCD_URL=http://etcd0:2379
       - ETCD_BASE=/webservers
       - SERVICE=test1
-      - NAME=node11
+      - PORT=3000
       - TTL=60
       - INFO=
 
@@ -47,7 +47,7 @@ services:
     * ETCD_URL=http://etcd0:2379
     * ETCD_BASE=/webservers
     * SERVICE=test1
-    * NAME=node12
+    * PORT=3000
     * TTL=60
     * INFO={"weight":0.3,"address":"172.16.5.4"}
 
@@ -66,7 +66,7 @@ etcd-registrar \
     --etcd-url=http://etcd0:2379 \
     --etcd-base=/myservices \
     --service=service1 \
-    --name=node11 \
+    --PORT=3000 \
     --info={weight:0.3} \
     --ttl=60
 ```
