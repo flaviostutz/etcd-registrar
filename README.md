@@ -71,6 +71,8 @@ etcd-registrar \
     --ttl=60
 ```
 
+* See a complete example at http://github.com/labbsr0x/convid-ssh-server
+
 ## Usage - running as a library
 
 * Use github.com/flaviostutz/etcd-registry
