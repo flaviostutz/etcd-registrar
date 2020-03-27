@@ -1,7 +1,9 @@
 # etcd-registrar
 This is an utility that could be used to register service nodes in an ETCD server with TTL so that you can query which nodes are alive from another client.
 
-# Usage
+It uses the lib https://github.com/flaviostutz/etcd-registry.
+
+# Usage - Standalone container
 
 1. Create a docker-compose.yml
 
@@ -41,7 +43,7 @@ services:
 
 2. Run ```docker-compose up```
 
-## Container ENVs
+### Container ENVs
 
     * LOG_LEVEL=debug
     * ETCD_URL=http://etcd0:2379
@@ -52,11 +54,9 @@ services:
     * INFO={"weight":0.3,"address":"172.16.5.4"}
 
 
-## More
+## Usage - run along with monitored service
 
 * Extract the executable from the container at /bin/etcd-registrar to run elsewhere
-
-* For running this utility within a Go application, use github.com/flaviostutz/etcd-registry
 
 * Command line flags:
 
@@ -70,3 +70,7 @@ etcd-registrar \
     --info={weight:0.3} \
     --ttl=60
 ```
+
+## Usage - running as a library
+
+* Use github.com/flaviostutz/etcd-registry
