@@ -66,7 +66,7 @@ etcd-registrar \
     --etcd-url=http://etcd0:2379 \
     --etcd-base=/myservices \
     --service=service1 \
-    --PORT=3000 \
+    --port=3000 \
     --info={weight:0.3} \
     --ttl=60
 ```
