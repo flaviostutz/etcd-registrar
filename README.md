@@ -1,4 +1,7 @@
 # etcd-registrar
+
+[<img src="https://goreportcard.com/badge/github.com/flaviostutz/etcd-registrar"/>](https://goreportcard.com/report/github.com/flaviostutz/etcd-registrar)
+
 This is an utility that could be used to register service nodes in an ETCD server with TTL so that you can query which nodes are alive from another client.
 
 It uses the lib https://github.com/flaviostutz/etcd-registry.
