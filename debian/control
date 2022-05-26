@@ -1,0 +1,14 @@
+Source: etcd-registrar
+Section: net
+Priority: optional
+Maintainer: Yma Het <yma.het@gmail.com>
+Build-Depends: debhelper-compat (= 12), golang-go
+Standards-Version: 4.4.1
+Homepage: https://github.com/yma-het/etcd-registrar
+Vcs-Git: https://github.com/yma-het/etcd-registrar.git
+
+Package: etcd-registrar
+Architecture: all
+Depends: ${misc:Depends}
+Description: Service discovery based on etcd
+ Service discovery based on etcd

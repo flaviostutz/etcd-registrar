@@ -1,0 +1,18 @@
+etcd-registrar (0.1-3) focal; urgency=medium
+
+  * bump version because of endless henging launchpad build
+
+ -- Yma Het <yma.het@gmail.com>  Thu, 26 May 2022 18:26:53 +0200
+
+
+etcd-registrar (0.1-2) focal; urgency=medium
+
+  * debian/rules: Export home directory to fix FTBFS initializing build cache.
+
+ -- Yma Het <yma.het@gmail.com>  Thu, 26 May 2022 15:20:10 +0200
+
+etcd-registrar (0.1-1) focal; urgency=medium
+
+  * Initial release
+
+ -- Yma Het <yma.het@gmail.com>  Thu, 26 May 2022 13:48:27 +0200

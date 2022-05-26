@@ -1,0 +1,49 @@
+Description: <short summary of the patch>
+ TODO: Put a short summary on the line above and replace this paragraph
+ with a longer explanation of this change. Complete the meta-information
+ with other relevant fields (see below for details). To make it easier, the
+ information below has been extracted from the changelog. Adjust it or drop
+ it.
+ .
+ etcd-registrar (0.1-1) focal; urgency=medium
+ .
+   * Initial release
+Author: Yma Het <yma.het@gmail.com>
+
+---
+The information above should follow the Patch Tagging Guidelines, please
+checkout http://dep.debian.net/deps/dep3/ to learn about the format. Here
+are templates for supplementary fields that you might want to add:
+
+Origin: <vendor|upstream|other>, <url of original patch>
+Bug: <url in upstream bugtracker>
+Bug-Debian: https://bugs.debian.org/<bugnumber>
+Bug-Ubuntu: https://launchpad.net/bugs/<bugnumber>
+Forwarded: <no|not-needed|url proving that it has been forwarded>
+Reviewed-By: <name and email of someone who approved the patch>
+Last-Update: 2022-05-26
+
+--- /dev/null
++++ etcd-registrar-0.1/Makefile
+@@ -0,0 +1,21 @@
++prefix = /usr/local
++
++all: etcd-registrar/etcd-registrar
++
++etcd-registrar/etcd-registrar: etcd-registrar/main.go
++	DIR=$$(dirname $^); \
++	cd $$DIR; \
++	go build -mod vendor
++
++install: src/hello
++	install -D etcd-registrar/etcd-registrar $(DESTDIR)$(prefix)/bin/etcd-registrar
++
++clean:
++	-rm -f etcd-registrar/etcd-registrar
++
++distclean: clean
++
++uninstall:
++	-rm -f $(DESTDIR)$(prefix)/bin/etcd-registrar
++
++.PHONY: all install clean distclean uninstall
