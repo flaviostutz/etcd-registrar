@@ -8,13 +8,15 @@ import (
 	"strings"
 	"time"
 
-	etcdregistry "github.com/flaviostutz/etcd-registry/etcd-registry"
+	etcdregistry "github.com/yma-het/etcd-registry/etcd-registry"
 	gohcmd "github.com/labbsr0x/goh/gohcmd"
 	"github.com/sirupsen/logrus"
 )
 
 func main() {
 	logLevel := flag.String("loglevel", "debug", "debug, info, warning, error")
+	etcdUsername0 := flag.String("username", "", "username")
+	etcdPassword0 := flag.String("password", "", "password")
 	etcdURL0 := flag.String("etcd-url", "", "ETCD URLs. ex: http://etcd0:2379")
 	etcdBase0 := flag.String("etcd-base", "/services", "Base ETCD path. Defaults to '/services'")
 	service0 := flag.String("service", "", "Service name. Ex: ServiceA")
@@ -24,6 +26,8 @@ func main() {
 	ttl0 := flag.Int("ttl", 60, "Time to Live. The daemon will keep updating the node's lease until it is killed")
 	flag.Parse()
 
+	etcdUsername := *etcdUsername0
+	etcdPassword := *etcdPassword0
 	etcdURL := *etcdURL0
 	etcdBase := *etcdBase0
 	list := *list0
@@ -70,7 +74,7 @@ func main() {
 	}
 
 	etcdEndpoints := strings.Split(etcdURL, ",")
-	reg, err := etcdregistry.NewEtcdRegistry(etcdEndpoints, etcdBase, 10*time.Second)
+	reg, err := etcdregistry.NewEtcdRegistry(etcdEndpoints, etcdBase, etcdUsername, etcdPassword, 10*time.Second)
 	if err != nil {
 		panic(err)
 	}
@@ -105,12 +109,12 @@ func main() {
 }
 
 func showUsage() {
-	fmt.Printf("This utility maintains a TTL based service registry, so that service nodes can register themselves if they desapear, its registration will vanish. This daemon will keep the node alive on ETCD until it is killed")
-	fmt.Printf("")
-	fmt.Printf("For service node registration:")
-	fmt.Printf("etcd-registrar --etcd-url=[ETCD URL] --etcd-base=[ETCD BASE] --service=[SERVICE NAME] --port=[SERVICE PORT] --ttl=[TTL IN SECONDS] --info=[NODE INFO JSON]")
-	fmt.Printf(
+	fmt.Println("This utility maintains a TTL based service registry, so that service nodes can register themselves if they desapear, its registration will vanish. This daemon will keep the node alive on ETCD until it is killed")
+	fmt.Println("")
+	fmt.Println("For service node registration:")
+	fmt.Println("etcd-registrar --etcd-url=[ETCD URL] --username [ETCD USERNAME] --password [ETCD PASSWORD] --etcd-base=[ETCD BASE] --service=[SERVICE NAME] --port=[SERVICE PORT] --ttl=[TTL IN SECONDS] --info=[NODE INFO JSON]")
+	fmt.Println(
 		`Sample:
-    etcd-registrar --etcd-url=http://etcd0:2379 --service=Service123 --port=3000 --ttl=60 --info='{address:172.17.1.23, weight:4}'
+    etcd-registrar --etcd-url=http://etcd0:2379 --username root --password mysecretpassword --service=Service123 --port=3000 --ttl=60 --info='{address:172.17.1.23, weight:4}'
 `)
 }
