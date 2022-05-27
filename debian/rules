@@ -13,7 +13,8 @@
 # package maintainers to append LDFLAGS
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
-export HOME = $(CURDIR)
+# mkdir -p $(CURDIR)/debian/tmp
+#export HOME=$(CURDIR)/debian/tmp
 
 %:
 	dh $@

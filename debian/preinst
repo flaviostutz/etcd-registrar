@@ -19,6 +19,10 @@ case "$1" in
             echo "Package cannot be installes without config file located in: /etc/etcd-registrar/config.values"
             exit 1
         fi
+        if [ ! -f /etc/etcd-registrar/config.secrets ]; then
+            echo "Package cannot be installes without config file located in: /etc/etcd-registrar/config.secrets"
+            exit 1
+        fi
     ;;
 
     abort-upgrade)

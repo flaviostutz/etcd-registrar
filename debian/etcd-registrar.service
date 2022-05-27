@@ -2,6 +2,7 @@
 Description=Service discovery client based on etcd
 [Service]
 EnvironmentFile=-/etc/etcd-registrar/config.values
+EnvironmentFile=-/etc/etcd-registrar/config.secrets
 ExecStart=/usr/bin/etcd-registrar
 ExecReload=/bin/kill -HUP $MAINPID
 [Install]
