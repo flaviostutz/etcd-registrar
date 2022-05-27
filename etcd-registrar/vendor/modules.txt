@@ -37,6 +37,8 @@ github.com/golang/protobuf/ptypes/timestamp
 github.com/google/uuid
 # github.com/labbsr0x/goh v1.0.1
 github.com/labbsr0x/goh/gohcmd
+# github.com/namsral/flag v1.7.4-pre
+github.com/namsral/flag
 # github.com/sirupsen/logrus v1.8.1
 github.com/sirupsen/logrus
 # github.com/yma-het/etcd-registry v0.0.0-20220526094344-1715c04b6b9c

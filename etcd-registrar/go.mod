@@ -12,6 +12,7 @@ require (
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/google/uuid v1.3.0 // indirect
 	github.com/labbsr0x/goh v1.0.1
+	github.com/namsral/flag v1.7.4-pre
 	github.com/sirupsen/logrus v1.8.1
 	github.com/yma-het/etcd-registry v0.0.0-20220526094344-1715c04b6b9c
 	go.etcd.io/etcd v3.3.27+incompatible // indirect

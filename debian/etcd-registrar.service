@@ -1,0 +1,8 @@
+[Unit]
+Description=Service discovery client based on etcd
+[Service]
+EnvironmentFile=-/etc/etcd-registrar/config.values
+ExecStart=/usr/bin/etcd-registrar
+ExecReload=/bin/kill -HUP $MAINPID
+[Install]
+WantedBy=multi-user.target

@@ -3,12 +3,12 @@ package main
 import (
 	"context"
 	"encoding/json"
-	"flag"
 	"fmt"
 	"strings"
 	"time"
 
 	etcdregistry "github.com/yma-het/etcd-registry/etcd-registry"
+	"github.com/namsral/flag"
 	gohcmd "github.com/labbsr0x/goh/gohcmd"
 	"github.com/sirupsen/logrus"
 )

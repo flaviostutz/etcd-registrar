@@ -12,6 +12,7 @@ install: etcd-registrar/etcd-registrar
 
 clean:
 	-rm -f etcd-registrar/etcd-registrar
+	-rm -f etcd-registrar/go.sum
 
 distclean: clean
 
