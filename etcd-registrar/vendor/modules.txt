@@ -20,6 +20,8 @@ github.com/coreos/go-semver/semver
 github.com/coreos/go-systemd/journal
 # github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f
 github.com/coreos/pkg/capnslog
+# github.com/flaviostutz/etcd-registry v0.0.0-20220526094344-1715c04b6b9c
+github.com/flaviostutz/etcd-registry/etcd-registry
 # github.com/go-cmd/cmd v1.0.5
 github.com/go-cmd/cmd
 # github.com/gogo/protobuf v1.3.2
@@ -41,8 +43,6 @@ github.com/labbsr0x/goh/gohcmd
 github.com/namsral/flag
 # github.com/sirupsen/logrus v1.8.1
 github.com/sirupsen/logrus
-# github.com/yma-het/etcd-registry v0.0.0-20220526094344-1715c04b6b9c
-github.com/yma-het/etcd-registry/etcd-registry
 # go.etcd.io/etcd v3.3.27+incompatible
 go.etcd.io/etcd/clientv3
 # go.uber.org/atomic v1.7.0
